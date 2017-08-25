@@ -1,0 +1,56 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+
+ext {
+    bintrayRepo = 'maven'
+    bintrayName = 'placeholder-textview'
+
+    publishedGroupId = 'app.youkai.placeholdertextview'
+    libraryName = 'PlaceholderTextView'
+    artifact = 'library'
+
+    libraryDescription = 'A custom TextView which shows placeholder lines given a sample text when it has no text set to it'
+
+    siteUrl = 'https://github.com/youkai-app/PlaceholderTextView'
+    gitUrl = 'https://github.com/youkai-app/PlaceholderTextView.git'
+
+    libraryVersion = '1.0.0'
+
+    developerId = 'youkai'
+    developerName = 'Youkai'
+    developerEmail = 'x.ihsan@gmail.com'
+
+    licenseName = 'The Apache Software License, Version 2.0'
+    licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+    allLicenses = ["Apache-2.0"]
+}
+
+android {
+    compileSdkVersion 26
+    buildToolsVersion "26.0.1"
+
+    defaultConfig {
+        minSdkVersion 14
+        targetSdkVersion 26
+        versionCode 1
+        versionName libraryVersion
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+
+    compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+
+    compile 'com.android.support:appcompat-v7:26.0.1'
+}
+
+apply from: '../install.gradle'
+apply from: '../bintray.gradle'

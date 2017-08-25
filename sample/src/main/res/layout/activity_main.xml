@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:padding="16dp"
+    tools:context="app.youkai.placeholdertextview.sample.MainActivity">
+
+    <app.youkai.placeholdertextview.PlaceholderTextView
+        android:id="@+id/placeholderText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#ff33b5e5"
+        app:ptv_sampleText="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis elementum pellentesque blandit. Nullam egestas lacus non fringilla convallis. Donec imperdiet maximus eleifend. Cras elementum non nisi id consequat." />
+
+    <TextView
+        android:id="@+id/plainText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis elementum pellentesque blandit. Nullam egestas lacus non fringilla convallis. Donec imperdiet maximus eleifend. Cras elementum non nisi id consequat."
+        android:textColor="#ff33b5e5"
+        tools:ignore="HardcodedText" />
+
+    <EditText
+        android:id="@+id/inputText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="62dp"
+        android:hint="Set text"
+        tools:ignore="HardcodedText" />
+
+    <Button
+        android:id="@+id/submitText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:text="Submit"
+        tools:ignore="HardcodedText,RtlHardcoded" />
+
+    <EditText
+        android:id="@+id/inputPlaceholder"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Set placeholder text"
+        tools:ignore="HardcodedText" />
+
+    <Button
+        android:id="@+id/submitPlaceholder"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:text="Submit"
+        tools:ignore="HardcodedText,RtlHardcoded" />
+</LinearLayout>
