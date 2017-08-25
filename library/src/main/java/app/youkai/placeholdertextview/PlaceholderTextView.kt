@@ -166,7 +166,7 @@ class PlaceholderTextView : AppCompatTextView {
                 Math.max((availableWidth - (compoundPaddingLeft + compoundPaddingRight)).toFloat(), 1f),
                 totalPlaceholderWidth
         )
-        linesToDraw = if (totalPlaceholderWidth > availableWidth) {
+        linesToDraw = if (totalPlaceholderWidth > singleLineWidth) {
             val lines = totalPlaceholderWidth / singleLineWidth
             val linesRound = Math.ceil(lines.toDouble()).toInt()
             if (ruleLines != null) {
