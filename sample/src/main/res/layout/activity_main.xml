@@ -13,6 +13,8 @@
         android:id="@+id/placeholderText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:lines="2"
+        android:maxLines="3"
         android:textColor="#ff33b5e5"
         app:ptv_sampleText="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis elementum pellentesque blandit. Nullam egestas lacus non fringilla convallis. Donec imperdiet maximus eleifend. Cras elementum non nisi id consequat." />
 
@@ -21,6 +23,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
+        android:lines="2"
+        android:maxLines="3"
         android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis elementum pellentesque blandit. Nullam egestas lacus non fringilla convallis. Donec imperdiet maximus eleifend. Cras elementum non nisi id consequat."
         android:textColor="#ff33b5e5"
         tools:ignore="HardcodedText" />

@@ -23,6 +23,7 @@ import android.graphics.RectF
 import android.support.v7.widget.AppCompatTextView
 import android.util.AttributeSet
 
+
 /**
  * A custom TextView which shows placeholder lines given a sample text when it has no text set to it.
  */
@@ -30,8 +31,10 @@ class PlaceholderTextView : AppCompatTextView {
     private val LINE_SPACING by lazy { 4.toPx(context) } // 4dp
 
     private var sampleText: String? = null
-
     private var placeholderColor: Int? = null
+
+    private var ruleLines: Int? = null
+    private var ruleMaxLines: Int? = null
 
     private var totalPlaceholderWidth: Float = 0f
     private var singleLineWidth: Float = 0f
@@ -61,6 +64,17 @@ class PlaceholderTextView : AppCompatTextView {
                 defStyleAttr ?: 0,
                 defStyleRes ?: 0
         )
+
+        val androidAttrs = intArrayOf(android.R.attr.lines, android.R.attr.maxLines)
+        val ta = context.obtainStyledAttributes(attrs, androidAttrs)
+        try {
+            val lines = ta.getInt(0, 0)
+            val maxLines = ta.getInt(1, 0)
+            if (lines != 0) ruleLines = lines
+            if (maxLines != 0) ruleMaxLines = maxLines
+        } finally {
+            ta.recycle()
+        }
 
         try {
             sampleText = a.getString(R.styleable.PlaceholderTextView_ptv_sampleText)
@@ -135,6 +149,8 @@ class PlaceholderTextView : AppCompatTextView {
      *
      * Calculates placeholder line width and the total number of lines to draw based on either view
      * width (if available), or screen width.
+     *
+     * Watches out for android:lines and android:maxLines. Gives dominance to android:lines.
      */
     internal fun calculatePlaceholderValues() {
         loadPlaceholderColor()
@@ -147,7 +163,17 @@ class PlaceholderTextView : AppCompatTextView {
         }
         totalPlaceholderWidth = (sampleText?.length?.toFloat() ?: 0f) * getAvgCharWidth()
         singleLineWidth = Math.max((availableWidth - (compoundPaddingLeft + compoundPaddingRight)).toFloat(), 1f)
-        linesToDraw = if (totalPlaceholderWidth > availableWidth) totalPlaceholderWidth / singleLineWidth else 1f
+        linesToDraw = if (totalPlaceholderWidth > availableWidth) {
+            val lines = totalPlaceholderWidth / singleLineWidth
+            val linesRound = Math.ceil(lines.toDouble()).toInt()
+            if (ruleLines != null) {
+                if (linesRound > ruleLines!!) ruleLines!!.toFloat() else lines
+            } else if (ruleMaxLines != null) {
+                if (linesRound > ruleMaxLines!!) ruleMaxLines!!.toFloat() else lines
+            } else {
+                lines
+            }
+        } else 1f
     }
 
     /**
