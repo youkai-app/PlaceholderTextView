@@ -204,17 +204,21 @@ class PlaceholderTextView : AppCompatTextView {
     }
 
     /**
-     *
+     * Draws placeholder lines.
      */
     internal fun drawPlaceholder(canvas: Canvas) {
         if (linesToDraw == 1f) {
             drawLine(canvas, compoundPaddingTop.toFloat(), totalPlaceholderWidth)
         } else {
+            // Loop as many times as we have full lines and draw them
             for (i in 0..linesToDraw.toInt() - 1) {
 
                 if (i == 0) {
+                    // The first/top line - goes at the top of the view + padding
                     drawLine(canvas, compoundPaddingTop.toFloat(), singleLineWidth)
                 } else {
+                    // Remaining full width lines
+                    // Top padding + every previous line + line spacings in between
                     drawLine(
                             canvas,
                             compoundPaddingTop.toFloat() + (placeholderLineHeight + LINE_SPACING) * i,
@@ -223,7 +227,10 @@ class PlaceholderTextView : AppCompatTextView {
                 }
             }
 
+            // Float minus Int gives us the width multiplier of the last line (e.g. 0.74).
             val lastLineWidthMultiplier = linesToDraw - linesToDraw.toInt()
+
+            // 0 would mean we only had full width lines and no leftover
             if (lastLineWidthMultiplier > 0f) {
                 drawLine(
                         canvas,
