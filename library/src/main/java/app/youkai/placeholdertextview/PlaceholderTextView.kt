@@ -162,7 +162,10 @@ class PlaceholderTextView : AppCompatTextView {
             context.resources.displayMetrics.widthPixels
         }
         totalPlaceholderWidth = (sampleText?.length?.toFloat() ?: 0f) * getAvgCharWidth()
-        singleLineWidth = Math.max((availableWidth - (compoundPaddingLeft + compoundPaddingRight)).toFloat(), 1f)
+        singleLineWidth = Math.min(
+                Math.max((availableWidth - (compoundPaddingLeft + compoundPaddingRight)).toFloat(), 1f),
+                totalPlaceholderWidth
+        )
         linesToDraw = if (totalPlaceholderWidth > availableWidth) {
             val lines = totalPlaceholderWidth / singleLineWidth
             val linesRound = Math.ceil(lines.toDouble()).toInt()
