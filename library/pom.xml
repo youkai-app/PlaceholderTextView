@@ -4,7 +4,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>app.youkai.placeholdertextview</groupId>
   <artifactId>library</artifactId>
-  <version>1.0.0</version>
+  <version>1.1.0</version>
   <packaging>aar</packaging>
   <name>PlaceholderTextView</name>
   <description>A custom TextView which shows placeholder lines given a sample text when it has no text set to it</description>
