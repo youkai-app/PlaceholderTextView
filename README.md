@@ -12,7 +12,7 @@ You give it some sample text, it calculates and draws equivalent placeholder lin
 
 ## Download
 ```gradle
-    compile 'app.youkai.placeholdertextview:library:1.1.0'
+    compile 'app.youkai.placeholdertextview:library:1.1.1'
 ```
 **Note:** You might have to add `jcenter()` to your repositories.
 

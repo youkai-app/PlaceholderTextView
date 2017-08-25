@@ -14,7 +14,7 @@ ext {
     siteUrl = 'https://github.com/youkai-app/PlaceholderTextView'
     gitUrl = 'https://github.com/youkai-app/PlaceholderTextView.git'
 
-    libraryVersion = '1.1.0'
+    libraryVersion = '1.1.1'
 
     developerId = 'youkai'
     developerName = 'Youkai'
@@ -32,7 +32,7 @@ android {
     defaultConfig {
         minSdkVersion 14
         targetSdkVersion 26
-        versionCode 2
+        versionCode 3
         versionName libraryVersion
     }
 
