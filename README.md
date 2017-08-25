@@ -22,6 +22,8 @@ You give it some sample text, it calculates and draws equivalent placeholder lin
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@color/my_text_color"
+            android:lines="2"
+            android:maxLines="3"
             app:ptv_placeholderColor="@color/my_placeholder_color"
             app:ptv_sampleText="Lorem ipsum dolor sit amet" />
 ```
@@ -30,6 +32,7 @@ You give it some sample text, it calculates and draws equivalent placeholder lin
     int originalPlaceholderColor = placeholderTextView.getPlaceholderColor();
     placeholderTextView.setPlaceholderColor(getColor(R.colod.my_placeholder.color));
 ```
+Yes, PlaceholderTextView does respect `android:lines` and `android:maxLines` attributes when displaying the placeholder lines.
 
 ## Theming
 By default, PlaceholderTextView uses the text color with 20% alpha. You can use `app:ptv_placeholderColor="@color/...` or `ptv.setPlaceholdercolor(int)` to set your own color. 
